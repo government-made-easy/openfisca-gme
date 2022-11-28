@@ -6,7 +6,7 @@ services:
       dockerfile: ./Dockerfile
     volumes:
       - ${LOCAL_WORKSPACE_FOLDER:-.}:/app
-    command: openfisca serve --port 5000
+    command: make serve-local
     user: user:user
     ports:
       - 5000:5000
