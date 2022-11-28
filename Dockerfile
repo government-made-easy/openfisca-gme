@@ -15,15 +15,15 @@ ENV PATH="/opt/venv/bin:$PATH"
 
 COPY . /app
 
-RUN useradd -m user
-USER user
-
 RUN make install
 RUN make build
 
+RUN useradd -m user
+USER user
+
 # final stage
 FROM python:3.7-bullseye
-USER user
+USER root
 
 COPY --from=builder /opt/venv /opt/venv
 
