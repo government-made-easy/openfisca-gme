@@ -1,0 +1,18 @@
+version: "3.7"
+services:
+  openfisca:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    volumes:
+      - ${LOCAL_WORKSPACE_FOLDER:-.}:/app
+    command: openfisca serve --port 5000
+    user: user:user
+    ports:
+      - 5000:5000
+    networks:
+      - openfisca
+
+networks:
+  openfisca:
+    name: openfisca
