@@ -1,6 +1,6 @@
 version: "3.7"
 services:
-  openfisca:
+  api:
     build:
       context: ./
       dockerfile: ./Dockerfile
@@ -11,8 +11,8 @@ services:
     ports:
       - 5000:5000
     networks:
-      - openfisca
+      - api
 
 networks:
-  openfisca:
-    name: openfisca
+  api:
+    name: api

@@ -1,5 +1,4 @@
-# temp stage
-FROM python:3.7-bullseye as builder
+FROM python:3.7-bullseye
 USER root
 
 WORKDIR /app
@@ -20,15 +19,5 @@ RUN make build
 
 RUN useradd -m user
 USER user
-
-# final stage
-FROM python:3.7-bullseye
-USER root
-
-COPY --from=builder /opt/venv /opt/venv
-
-WORKDIR /app
-
-ENV PATH="/opt/venv/bin:$PATH"
 
 EXPOSE 5000
